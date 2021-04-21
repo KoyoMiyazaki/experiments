@@ -10,13 +10,11 @@ try {
       PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
       PDO::ATTR_EMULATE_PREPARES => false,
     ]);
-    $stmt = $pdo->prepare("UPDATE datas SET text = :text, remarks = :remarks WHERE id = :id");
-    $stmt->bindValue(':text', $_POST['text']);
-    $stmt->bindValue(':remarks', $_POST['remarks']);
+    $stmt = $pdo->prepare("DELETE FROM datas WHERE id = :id");
     $stmt->bindValue(':id', $_POST['id']);
     $stmt->execute();
 } catch (PDOException $e) {
-    echo '更新失敗' . $e->getMessage() . "\n";
+    echo '削除失敗' . $e->getMessage() . "\n";
     exit();
 }
 
@@ -27,10 +25,10 @@ try {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>更新完了</title>
+    <title>削除完了</title>
 </head>
 <body>
-    <p>更新しました</p>
+    <p>削除しました</p>
     <p><a href="index.php">前画面へ</a></p>
 </body>
 </html>
