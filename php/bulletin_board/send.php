@@ -24,11 +24,6 @@ $pdo = new PDO("mysql:dbname=test;host=127.0.0.1;charset=utf8", "php_user", "pas
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
     PDO::ATTR_EMULATE_PREPARES => false
 ]);
-if ($pdo) {
-    echo "DB connection OK";
-} else {
-    echo "DB connection NG";
-}
 
 // SQL実行
 $stmt = $pdo->prepare("INSERT INTO post (name, contents, created_at) VALUES (:name, :contents, :created_at)");
@@ -37,12 +32,6 @@ $stmt->bindValue(":name", $name);
 $stmt->bindValue(":contents", $contents);
 $stmt->bindValue(":created_at", $created_at);
 $stmt->execute();
-
-if ($stmt) {
-    echo "registration successful";
-} else {
-    echo "registration failure";
-}
 
 // $stmt = $pdo->query("SELECT * FROM post");
 // $result = $stmt->fetchall();
