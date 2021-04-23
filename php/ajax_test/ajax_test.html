@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax Test</title>
+    <script src="jquery-3.6.0.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script> -->
+</head>
+<body>
+    <!-- 指定したidからレコード取得 -->
+    <div class="show_products">
+        IDを入力:<input id="id_number"><br>
+        <!-- 取得したレコードを表示 -->
+        <div id="result">
+        </div>
+        <!-- 送信ボタン -->
+        <button id="ajax_show">詳細ボタン</button>
+    </div>
+    <!-- レコード追加 -->
+    <div class="add_products">
+        <!-- 入力フォーム -->
+        商品名を入力:<input id="name"><br>
+        価格を入力:<input id="price"><br>
+        <!-- レコード追加後に入力内容を表示 -->
+        <div id="add_result">
+        </div>
+        <!-- 送信ボタン -->
+        <button id="ajax_add">追加ボタン</button>
+    </div>
+    <!-- レコード全件取得 -->
+    <!-- 追加したレコードも即時反映される -->
+    <table border="1" id="all_show_result">
+        <tr>
+            <th>id</th><th>商品名</th><th>価格</th>
+        </tr>
+    </table>
+    <script src="ajax_test.js"></script>
+</body>
+</html>
