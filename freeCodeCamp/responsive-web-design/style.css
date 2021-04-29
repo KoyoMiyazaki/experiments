@@ -1,0 +1,186 @@
+h4 {
+    text-align: center;
+    background-color: rgba(45, 45, 45, 0.1);
+    padding: 20px;
+    font-size: 24px;
+    text-transform: capitalize;
+}
+p {
+    text-align: justify;
+}
+.links {
+    text-align: left;
+    color: black;
+    opacity: 0.7;
+}
+#thumbnail {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+                0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.fullCard {
+    width: 250px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 10px 5px;
+    padding: 4px;
+    float: left;
+}
+.cardContent {
+    padding: 10px;
+}
+.cardText {
+    margin-bottom: 30px;
+}
+
+.fullCard2 {
+    width: 180px;
+    height: 400px;
+    float: right;
+    background: repeating-linear-gradient(
+        90deg,
+        /* yellow 0px,
+        blue 40px,
+        green 40px,
+        red 80px */
+        yellow 0px,
+        yellow 20px,
+        black 20px,
+        black 40px
+    );
+}
+
+.rectangle1 {
+    margin-left: 50px;
+    width: 200px;
+    height: 100px;
+    background: linear-gradient(
+        0deg,
+        #fcccff,
+        #cfffcc
+    );
+    transform: skewX(20deg);
+}
+
+.rectangle1:hover {
+    transform: scale(2);
+}
+
+.rectangle2 {
+    margin: 50px 0 0 50px;
+    width: 100px;
+    height: 100px;
+    background-color: transparent;
+    border-radius: 50%;
+    box-shadow: 25px 10px 0 0 yellow;
+}
+
+.heart {
+    margin: 100px 0 0 100px;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: pink;
+    border-radius: 10%;
+}
+
+.heart:before {
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: pink;
+    top: -25px;
+    left: 0px;
+    border-radius: 50%;
+}
+.heart:after {
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: pink;
+    top: 0px;
+    left: 25px;
+    border-radius: 50%;
+}
+
+.clover1 {
+    margin: 100px 0 0 100px;
+    position: relative;
+    width: 35px;
+    height: 35px;
+    background-color: green;
+    top: 135px;
+    left: 35px;
+}
+.clover1:before {
+    content: "";
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background-color: green;
+    top: -25px;
+    left: 0px;
+    border-radius: 50%;
+}
+
+.clover2 {
+    margin: 100px 0 0 100px;
+    position: relative;
+    width: 35px;
+    height: 35px;
+    background-color: green;
+    top: 40px;
+    left: 35px;
+}
+.clover2:before {
+    content: "";
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background-color: green;
+    top: 0px;
+    left: 0px;
+    border-radius: 50%;
+}
+
+.clover3 {
+    margin: 100px 0 0 100px;
+    position: relative;
+    width: 35px;
+    height: 35px;
+    background-color: green;
+    top: -95px;
+    left: -5px;
+}
+.clover3:before {
+    content: "";
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background-color: green;
+    top: 0px;
+    left: -25px;
+    border-radius: 50%;
+}
+
+.clover4 {
+    margin: 100px 0 0 100px;
+    position: relative;
+    width: 35px;
+    height: 35px;
+    background-color: green;
+    top: -270px;
+    left: -5px;
+}
+.clover4:before {
+    content: "";
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background-color: green;
+    top: -25px;
+    left: -25px;
+    border-radius: 50%;
+}
