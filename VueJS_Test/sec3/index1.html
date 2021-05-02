@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+
+    <div id="app">
+        <p v-if="ok">OK!</p>
+        <p v-else-if="maybeOk">maybe OK!</p>
+        <p v-else>Not OK...</p>
+
+        <template v-if="ok">
+            <p>Hello</p>
+            <p>Good Bye</p>
+            <p>おはよう</p>
+        </template>
+        <button @click="ok = !ok">ボタン</button>
+
+        <p v-show="ok">show</p>
+
+        <ul>
+            <li v-for="(fruit, index) in fruits">({{index}}){{fruit}}</li>
+        </ul>
+
+        <ul>
+            <li v-for="(value, key, index) in object">({{index}}) {{key}}: {{value}}</li>
+        </ul>
+
+        <ul>
+            <template v-for="fruit in fruits">
+                <li>{{fruit}}</li>
+                <hr>
+            </template>
+        </ul>
+
+        <ul>
+            <li v-for="n in 10">{{n}}</li>
+        </ul>
+
+        
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                ok: true,
+                maybeOk: false,
+                fruits: ['りんご', 'バナナ', 'ぶどう'],
+                object: {
+                    firstName: 'Bob',
+                    lastName: 'Tanaka',
+                    age: 21
+                }
+            }
+        })
+    </script>
+</body>
+</html>
