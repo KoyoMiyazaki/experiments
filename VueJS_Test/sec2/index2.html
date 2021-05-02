@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    
+    <div id="app">
+        <div>{{ html }}</div>
+        <div v-html="html"></div>
+        <a :[attribute]="url">Google</a>
+        <!-- <a :[attribute]="urlTwitter" :id="number">Twitter</a> -->
+        <a v-bind="twitterObject">Twitter</a>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                html: '<h1>Hello Vue</h1>',
+                url: 'https://google.com',
+                attribute: 'href',
+                twitterObject: {
+                    href: 'https://twitter.com',
+                    id: 31
+                }
+            }
+        })
+    </script>
+</body>
+</html>

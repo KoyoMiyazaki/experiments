@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    
+    <div id="app">
+        <h1 :class="classObject">Hello</h1>
+        <button @click="isActive = !isActive">切り替え</button>
+
+        <h1 :class="[{red: isActive}, bg]">Hello</h1>
+
+        <!-- <h1 :style="styleObject">Hello</h1> -->
+        <h1 :style="[styleObject, baseStyles]">Hello</h1>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                isActive: true,
+                color: 'red',
+                bg: 'bg-blue',
+                styleObject: {
+                    color: 'red',
+                    'background-color': 'blue'
+                },
+                baseStyles: {
+                    fontSize: '60px'
+                }
+            },
+            computed: {
+                classObject: function() {
+                    return {
+                        red: this.isActive, 
+                        'bg-blue': !this.isActive
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>
