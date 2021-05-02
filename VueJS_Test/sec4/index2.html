@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+
+    <div id="app">
+        <p>{{message}}</p>
+        <p>{{name}}</p>
+        <p>{{myData}}</p>
+
+        <button @click="name = 'ボタンから変更'">変更</button>
+    </div>
+
+    <div id="app2">
+    </div>
+
+    <div id="app3">
+    </div>
+
+    <script>
+        var data = {
+            message: 'hello',
+            name: 'Bob'
+        }
+
+        var vm = new Vue({
+            data: data,
+            computed: {
+                myData: function() {
+                    return this.$data;
+                }
+            }
+        })
+
+        vm.$mount('#app')
+
+        new Vue({
+            el: '#app2',
+            data: {
+                name: 'Bob'
+            },
+            template: '<h1>HELLO {{name}}</h1>'
+        })
+
+        new Vue({
+            el: '#app3',
+            data: {
+                name: 'Bob'
+            },
+            render: function(createElement) {
+                console.log(createElement('h1', 'こんにちは' + this.name));
+                return createElement('h1', 'こんにちは' + this.name);
+            }
+        })
+    </script>
+</body>
+</html>
