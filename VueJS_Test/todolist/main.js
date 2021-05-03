@@ -18,7 +18,16 @@ const todoStorage = {
 const app = new Vue({
     el: '#app',
     data: {
-        todos: []
+        todos: [],
+        options: [
+            { value: -1, label: 'すべて' },
+            { value: 0, label: '作業中' },
+            { value: 1, label: '完了' }
+        ],
+        current: -1
+    },
+    created() {
+        this.todos = todoStorage.fetch()
     },
     methods: {
         doAdd: function(event, value) {
@@ -32,6 +41,33 @@ const app = new Vue({
                 state: 0
             })
             comment.value = ''
+        },
+        doChangeState: function(item) {
+            item.state = item.state ? 0 : 1
+        },
+        doRemove: function(item) {
+            const index = this.todos.indexOf(item)
+            this.todos.splice(index, 1)
+        }
+    },
+    watch: {
+        todos: {
+            handler: function(todos) {
+                todoStorage.save(todos)
+            },
+            deep: true
+        }
+    },
+    computed: {
+        computedTodos: function() {
+            return this.todos.filter(function(el) {
+                return this.current < 0 ? true : this.current === el.state
+            }, this)
+        },
+        labels() {
+            return this.options.reduce(function(a, b) {
+                return Object.assign(a, { [b.value]: b.label })
+            }, {})
         }
     }
 })
