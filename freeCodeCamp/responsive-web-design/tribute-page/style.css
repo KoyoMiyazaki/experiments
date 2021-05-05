@@ -21,6 +21,10 @@ ol > li {
     line-height: 1.0;
 }
 
+a:visited {
+    color: #6138AB;
+}
+
 #main {
     max-width: 1080px;
     margin: 0 auto;
