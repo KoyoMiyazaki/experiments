@@ -1,0 +1,38 @@
+#main {
+    max-width: 1080px;
+    margin: 0 auto;
+    text-align: center;
+    background-color: #DDDDDD
+}
+
+#title {
+    padding-top: 22px;
+}
+
+#image {
+    display: block;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+#img-div {
+    background-color: #FCFCFC;
+    padding-top: 20px;
+}
+
+ul {
+    display: inline-block;
+}
+
+li {
+    text-align: left;
+}
+
+ul > li {
+    margin-top: 10px;
+}
+
+.nonstyle-list {
+    list-style: none;
+    /* font-weight: bold; */
+}
