@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+    <!-- <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script> -->
 
     <header>
         <h1 id="title">Survey Form</h1>
@@ -41,20 +41,41 @@
     
             <p id="radioes-label">Chose one</p>
             <div class="radio-class">
-
-                <input type="radio" name="radio-group" class="radio-button" value="radio1">
+                <input type="radio" name="radio-group" class="radio-button" value="radio1" id="radio1" checked>
                 <label for="radio1" class="radio-label">radio1</label>
-                <input type="radio" name="radio-group" class="radio-button" value="radio2">
+            </div>
+            <div class="radio-class">
+                <input type="radio" name="radio-group" class="radio-button" value="radio2" id="radio2">
                 <label for="radio2" class="radio-label">radio2</label>
+            </div>
+            <div class="radio-class">
+                <input type="radio" name="radio-group" class="radio-button" value="radio3" id="radio3">
+                <label for="radio3" class="radio-label">radio3</label>
             </div>
     
             <p id="checkboxes-label">Select one or more</p>
-            <input type="checkbox" name="checkbox-group" id="checkbox1" value="checkbox1">
-            <label for="checkbox1" class="checkbox-label">checkbox1</label>
-            <input type="checkbox" name="checkbox-group" id="checkbox2" value="checkbox2">
-            <label for="checkbox2" class="checkbox-label">checkbox2</label>
+            <div class="checkbox-class">
+                <input type="checkbox" name="checkbox-group" id="checkbox1" value="checkbox1">
+                <label for="checkbox1" class="checkbox-label">checkbox1</label>
+            </div>
+            <div class="checkbox-class">
+                <input type="checkbox" name="checkbox-group" id="checkbox2" value="checkbox2">
+                <label for="checkbox2" class="checkbox-label">checkbox2</label>
+            </div>
+            <div class="checkbox-class">
+                <input type="checkbox" name="checkbox-group" id="checkbox3" value="checkbox3">
+                <label for="checkbox3" class="checkbox-label">checkbox4</label>
+            </div>
+            <div class="checkbox-class">
+                <input type="checkbox" name="checkbox-group" id="checkbox4" value="checkbox4">
+                <label for="checkbox4" class="checkbox-label">checkbox4</label>
+            </div>
+            <div class="checkbox-class">
+                <input type="checkbox" name="checkbox-group" id="checkbox5" value="checkbox5">
+                <label for="checkbox5" class="checkbox-label">checkbox5</label>
+            </div>
     
-            <label for="textarea">textarea</label>
+            <label for="textarea" id="textarea-label">textarea</label>
             <textarea name="textarea" id="textarea" rows="5"></textarea>
     
             <button id="submit" type="submit">Submit</button>
