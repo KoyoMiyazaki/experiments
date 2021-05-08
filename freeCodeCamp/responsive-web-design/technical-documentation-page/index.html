@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Documentation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+
+    <nav id="navbar">
+        <header>Navbar's Header</header>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur tenetur voluptatem enim esse molestias quis, sit ad voluptate explicabo, perspiciatis exercitationem veniam laborum ex amet sunt molestiae dolor. Nobis, molestiae.</p>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur tenetur voluptatem enim esse molestias quis, sit ad voluptate explicabo, perspiciatis exercitationem veniam laborum ex amet sunt molestiae dolor. Nobis, molestiae.</p>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur tenetur voluptatem enim esse molestias quis, sit ad voluptate explicabo, perspiciatis exercitationem veniam laborum ex amet sunt molestiae dolor. Nobis, molestiae.</p>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur tenetur voluptatem enim esse molestias quis, sit ad voluptate explicabo, perspiciatis exercitationem veniam laborum ex amet sunt molestiae dolor. Nobis, molestiae.</p>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur tenetur voluptatem enim esse molestias quis, sit ad voluptate explicabo, perspiciatis exercitationem veniam laborum ex amet sunt molestiae dolor. Nobis, molestiae.</p>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur tenetur voluptatem enim esse molestias quis, sit ad voluptate explicabo, perspiciatis exercitationem veniam laborum ex amet sunt molestiae dolor. Nobis, molestiae.</p>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur tenetur voluptatem enim esse molestias quis, sit ad voluptate explicabo, perspiciatis exercitationem veniam laborum ex amet sunt molestiae dolor. Nobis, molestiae.</p>
+    </nav>
+
+    <main id="main-doc">
+        <div class="main-content">
+            <section class="main-section" id="what_is_html">
+                <header>What is HTML</header>
+                <article>
+                    <p>HTML (Hypertext Markup Language) is not a programming language. It is a markup language that tells web browsers how to structure the web pages you visit. It can be as complicated or as simple as the web developer wants it to be. HTML consists of a series of elements, which you use to enclose, wrap, or mark up different parts of content to make it appear or act in a certain way. The enclosing tags can make content into a hyperlink to connect to another page, italicize words, and so on.  For example, consider the following line of text:</p>
+                    <code class="code-block">
+                        My cat is very grumpy
+                    </code>
+                    <p>If we wanted the text to stand by itself, we could specify that it is a paragraph by enclosing it in a paragraph <code>&lt;p&gt;</code> element:</p>
+                    <code class="code-block">
+                        &lt;p&gt;My cat is very grumpy&lt;/p&gt;
+                    </code>
+                </article>
+            </section>
+
+            <section class="main-section" id="anatomy_of_an_html_element">
+                <header>Anatomy of an HTML element</header>
+                <article>
+                    <p>The anatomy of our element is:</p>
+                    <ul>
+                        <li>
+                            <b>The opening tag</b>: This consists of the name of the element (in this example, <i>p</i> for paragraph), wrapped in opening and closing angle brackets. This opening tag marks where the element begins or starts to take effect. In this example, it precedes the start of the paragraph text.
+                        </li>
+                        <li>
+                            <b>The content</b>: This is the content of the element. In this example, it is the paragraph text.
+                        </li>
+                        <li>
+                            <b>The closing tag</b>: This is the same as the opening tag, except that it includes a forward slash before the element name. This marks where the element ends. Failing to include a closing tag is a common beginner error that can produce peculiar results.
+                        </li>
+                    </ul>
+                    <p>The element is the opening tag, followed by content, followed by the closing tag.</p>
+                </article>
+            </section>
+
+            <section class="main-section" id="attributes">
+                <header>Attributes</header>
+                <article>
+                    <p>Attributes contain extra information about the element that won't appear in the content. In this example, the <code>class</code> attribute is an identifying name used to target the element with style information.</p>
+                    <p>An attribute should have:</p>
+                    <ol>
+                        <li>
+                            A space between it and the element name. (For an element with more than one attribute, the attributes should be separated by spaces too.)
+                        </li>
+                        <li>
+                            The attribute name, followed by an equal sign.
+                        </li>
+                        <li>
+                            An attribute value, wrapped with opening and closing quote marks.
+                        </li>
+                    </ol>
+                </article>
+            </section>
+            
+            <section class="main-section" id="anatomy_of_an_html_document">
+                <header>Anatomy of an HTML document</header>
+                <article>
+                    <p>Individual HTML elements aren't very useful on their own. Next, let's examine how individual elements combine to form an entire HTML page:</p>
+                    <code class="code-block">
+                        &lt;!DOCTYPE html&gt;<br>
+                        &lt;html&gt;<br>
+                        &lt;head&gt;<br>
+                        &nbsp;&nbsp;&lt;meta charset="utf-8"&gt;<br>
+                        &nbsp;&nbsp;&lt;title&gt;My test page&lt;/title&gt;<br>
+                        &lt;/head&gt;<br>
+                        &lt;body&gt;<br>
+                        &nbsp;&nbsp;&lt;p&gt;This is my page&lt;/p&gt;<br>
+                        &lt;/body&gt;<br>
+                        &lt;/html&gt;<br>
+                    </code>
+                    <p>Here we have:</p>
+                    <ol>
+                        <li>
+                            <code>&lt;!DOCTYPE html&gt;</code>: The doctype. When HTML was young (1991-1992), doctypes were meant to act as links to a set of rules that the HTML page had to follow to be considered good HTML. Doctypes used to look something like this:
+                            <code class="code-block">
+                                &lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+                            </code>
+                            More recently, the doctype is a historical artifact that needs to be included for everything else to work right. &lt;!DOCTYPE html&gt; is the shortest string of characters that counts as a valid doctype. That is all you need to know!
+                        </li>
+                        <li>
+                            <code>&lt;html&gt;&lt;/html&gt;</code>: The <code>&lt;html&gt;</code> element. This element wraps all the content on the page. It is sometimes known as the root element.
+                        </li>
+                        <li>
+                            <code>&lt;head&gt;&lt;/head&gt;</code>: The <code>&lt;head&gt;</code> element. This element acts as a container for everything you want to include on the HTML page, that isn't the content the page will show to viewers. This includes keywords and a page description that would appear in search results, CSS to style content, character set declarations, and more. You'll learn more about this in the next article of the series.
+                        </li>
+                        <li>
+                            <code>&lt;meta charset="utf-8"&gt;</code>: This element specifies the character set for your document to UTF-8, which includes most characters from the vast majority of human written languages. With this setting, the page can now handle any textual content it might contain. There is no reason not to set this, and it can help avoid some problems later.
+                        </li>
+                        <li>
+                            <code>&lt;title&gt;&lt;/title&gt;</code>: The <code>&lt;title&gt;</code> element. This sets the title of the page, which is the title that appears in the browser tab the page is loaded in. The page title is also used to describe the page when it is bookmarked.
+                        </li>
+                        <li>
+                            <code>&lt;body&gt;&lt;/body&gt;</code>: The <code>&lt;body&gt;</code> element. This contains all the content that displays on the page, including text, images, videos, games, playable audio tracks, or whatever else.
+                        </li>
+                    </ol>
+                </article>
+            </section>
+
+            <section class="main-section" id="html_comments">
+                <header>HTML comments</header>
+                <article>
+                    <p>HTML has a mechanism to write comments in the code. Browsers ignore comments, effectively making comments invisible to the user. The purpose of comments is to allow you to include notes in the code to explain your logic or coding. This is very useful if you return to a code base after being away for long enough that you don't completely remember it. Likewise, comments are invaluable as different people are making changes and updates.</p>
+                    <p>To write an HTML comment, wrap it in the special markers <code>&lt;!--</code> and <code>--&gt;</code>. For example:</p>
+                    <code class="code-block">
+                        &lt;p&gt;I'm not inside a comment&lt;/p&gt;<br>
+                        <br>
+                        &lt;!-- &lt;p&gt;I am!&lt;/p&gt; --&gt;<br>
+                    </code>
+                    <p>As you can see below, only the first paragraph displays in the live output.</p>
+                </article>
+            </section>
+
+            <section class="main-section" id="reference">
+                <header>Reference</header>
+                <article>
+                    <p>All the documentation in this page is taken from <a href="">MDN</a></p>
+                </article>
+            </section>
+
+        </div>
+    </main>
+</body>
+</html>
