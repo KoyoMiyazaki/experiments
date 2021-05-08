@@ -32,6 +32,28 @@ code {
     overflow-y: scroll;
 }
 
+.navbar-header {
+    text-align: center;
+    font-size: 1.6rem;
+    color: #222222;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #222222;
+}
+
+#navbar ul {
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+}
+
+.nav-link {
+    display: block;
+    text-decoration: none;
+    color: #222222;
+    padding: 0.5rem 0 0.5rem 1rem;
+    border-bottom: 1px solid #222222;
+}
+
 /* main */
 #main-doc {
     position: absolute;
@@ -60,5 +82,9 @@ code {
     #navbar, #main-doc {
         position: relative;
         width: 100%;
+    }
+
+    #navbar {
+        height: auto;
     }
 }
