@@ -19,7 +19,27 @@ const testDom3 = function(name, str) {
     nam[0].value = str;
 }
 
+const testDom4 = function() {
+    let list = document.querySelector('#list .external');
+    for (let i = 0; i < list.length; i++) {
+        console.log(list.item(i).textContent);
+    }
+}
+
+const testDom5 = function() {
+    let s = document.getElementById('food');
+    let opts = s.childNodes;
+    for (let i = 0; i < opts.length; i++) {
+        let opt = opts.item(i);
+        if (opt.nodeType === 1) {
+            console.log(opt.value);
+        }
+    }
+}
+
 // メイン
 testDom1('result');
 testDom2('a');
 testDom3('test', 'Arghhhhhhhhhhh');
+testDom4();
+testDom5();
