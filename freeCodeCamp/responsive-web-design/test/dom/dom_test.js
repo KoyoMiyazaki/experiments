@@ -37,6 +37,18 @@ const testDom5 = function() {
     }
 }
 
+// window.onload = function() {
+//     document.getElementById('btn').onclick = function() {
+//         window.alert('ボタンがクリックされた');
+//     }
+// }
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('btn').addEventListener('click', function() {
+        window.alert('ボタンがクリックされた');
+    }, false);
+}, false);
+
 // メイン
 testDom1('result');
 testDom2('a');
