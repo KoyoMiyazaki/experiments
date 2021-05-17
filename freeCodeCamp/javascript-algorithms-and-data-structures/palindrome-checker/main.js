@@ -1,4 +1,4 @@
-// freeCodeCamp - Map the Debris
+// freeCodeCamp - Palindrome Checker
 function palindrome(str) {
     const strReverse = str => str.split("").reverse().join("");
     const removeNonAlNumChar = str => str.replace(/[^a-zA-Z0-9]/g, "");
