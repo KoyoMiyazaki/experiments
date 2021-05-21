@@ -1,13 +1,25 @@
-
-$textColor: aquamarine;
-$boxShadowColor: #333;
-$listFontSize: 20px;
+@import 'variables';
 
 @mixin box-shadow($x, $y, $blur, $c) {
     -webkit-box-shadow: $x $y $blur $c;
     -moz-box-shadow: $x $y $blur $c;
     -ms-box-shadow: $x $y $blur $c;
     box-shadow: $x $y $blur $c;
+}
+
+@mixin box-background-color($val) {
+    @if $val == info {
+        background-color: green;
+    }
+    @else if $val == warn {
+        background-color: yellow;
+    }
+    @else if $val == danger {
+        background-color: red;
+    }
+    @else {
+        background-color: gray;
+    }
 }
 
 .title {
@@ -30,8 +42,36 @@ $listFontSize: 20px;
     }
 }
 
-button {
+.submit-button {
     display: block;
     padding: 10px 20px;
     @include box-shadow(2px, 2px, 4px, $boxShadowColor);
+}
+
+.select-buttons {
+    margin-top: 40px;
+
+    .select-button {
+        padding: 10px 20px;
+    }
+
+    .info {
+        @include box-background-color(info);
+    }
+
+    .warn {
+        @include box-background-color(warn);
+    }
+
+    .danger {
+        @include box-background-color(danger);
+    }
+}
+
+@for $i from 1 through 6 {
+    .fs-#{$i} { font-size: 6px * $i; }
+}
+
+@each $key, $bgColor in $bgColors {
+    .#{$bgColor}-bg { background-color: $bgColor; }
 }
