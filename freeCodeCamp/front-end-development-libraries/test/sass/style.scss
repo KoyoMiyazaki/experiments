@@ -1,0 +1,37 @@
+
+$textColor: aquamarine;
+$boxShadowColor: #333;
+$listFontSize: 20px;
+
+@mixin box-shadow($x, $y, $blur, $c) {
+    -webkit-box-shadow: $x $y $blur $c;
+    -moz-box-shadow: $x $y $blur $c;
+    -ms-box-shadow: $x $y $blur $c;
+    box-shadow: $x $y $blur $c;
+}
+
+.title {
+    color: $textColor;
+}
+
+.content {
+    color : $textColor;
+}
+
+.ul-class {
+    display: inline-block;
+
+    ul {
+        list-style: none;
+
+        li {
+            font-size: $listFontSize;
+        }
+    }
+}
+
+button {
+    display: block;
+    padding: 10px 20px;
+    @include box-shadow(2px, 2px, 4px, $boxShadowColor);
+}

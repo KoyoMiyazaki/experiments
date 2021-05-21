@@ -1,0 +1,28 @@
+.title {
+  color: aquamarine;
+}
+
+.content {
+  color: aquamarine;
+}
+
+.ul-class {
+  display: inline-block;
+}
+
+.ul-class ul {
+  list-style: none;
+}
+
+.ul-class ul li {
+  font-size: 20px;
+}
+
+button {
+  display: block;
+  padding: 10px 20px;
+  -webkit-box-shadow: 2px 2px 4px #333;
+  -ms-box-shadow: 2px 2px 4px #333;
+  box-shadow: 2px 2px 4px #333;
+}
+/*# sourceMappingURL=style.css.map */
