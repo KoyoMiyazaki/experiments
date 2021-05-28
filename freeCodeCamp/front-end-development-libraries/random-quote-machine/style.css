@@ -1,0 +1,80 @@
+/* common style */
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  vertical-align: baseline;
+  word-wrap: break-word;
+}
+
+.mt-200px {
+  margin-top: 200px;
+}
+
+/* Smart Phone style */
+.container {
+  padding: 30px;
+  background-color: #eeeeee;
+}
+
+.fa-size-large {
+  font-size: 1rem;
+}
+
+#author {
+  margin-top: -5px;
+  font-size: 0.8rem;
+}
+
+#new-quote {
+  padding: 4px 10px;
+}
+
+.fa-twitter-square {
+  font-size: 40px;
+}
+
+/* Tablet style */
+@media screen and (min-width: 600px) {
+  .container {
+    padding: 40px;
+  }
+  .fa-size-large {
+    font-size: 1rem;
+  }
+  #text {
+    font-size: 1.2rem;
+  }
+  #author {
+    font-size: 1.0rem;
+  }
+  #new-quote {
+    padding: 5px 15px;
+  }
+  .fa-twitter-square {
+    font-size: 42px;
+  }
+}
+
+/* PC style */
+@media screen and (min-width: 1025px) {
+  .container {
+    padding: 50px;
+  }
+  .fa-size-large {
+    font-size: 1rem;
+  }
+  #text {
+    font-size: 1.5rem;
+  }
+  #author {
+    font-size: 1.2rem;
+  }
+  #new-quote {
+    padding: 6px 20px;
+  }
+  .fa-twitter-square {
+    font-size: 44px;
+  }
+}
+/*# sourceMappingURL=style.css.map */
