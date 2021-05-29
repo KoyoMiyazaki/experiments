@@ -1,5 +1,8 @@
 @charset "utf-8";
 
+$containerColor: #eeeeee;
+$buttonBorderColor: #aaaaaa;
+
 /* common style */
 * {
   margin: 0;
@@ -17,7 +20,7 @@
 /* Smart Phone style */
 .container {
   padding: 30px;
-  background-color: #eeeeee;
+  background-color: $containerColor;
 }
 
 .fa-size-large {
@@ -31,10 +34,19 @@
 
 #new-quote {
   padding: 4px 10px;
+  border: 1px solid $buttonBorderColor;
+  border-radius: 5px;
+  transition: all 0.3s;
+  &:hover {
+    opacity: 0.5;
+  }
 }
 
 .fa-twitter-square {
   font-size: 40px;
+  &:hover {
+    opacity: 0.5;
+  }
 }
 
 /* Tablet style */

@@ -30,10 +30,22 @@
 
 #new-quote {
   padding: 4px 10px;
+  border: 1px solid #aaaaaa;
+  border-radius: 5px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+#new-quote:hover {
+  opacity: 0.5;
 }
 
 .fa-twitter-square {
   font-size: 40px;
+}
+
+.fa-twitter-square:hover {
+  opacity: 0.5;
 }
 
 /* Tablet style */

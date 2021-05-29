@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
         let bgColorIndex = getRandomIndex(bgColors.length);
         document.getElementsByTagName('body')[0].style.backgroundColor = bgColors[bgColorIndex];
+        document.getElementsByClassName('fa-twitter-square')[0].style.color = bgColors[bgColorIndex];
+        document.getElementById('new-quote').style.backgroundColor = bgColors[bgColorIndex];
 
         let url = encodeURI(`https://twitter.com/intent/tweet?hashtags=quotes&text="${quote}" ${author}`);
         document.getElementById('tweet-quote').href = url;
@@ -45,6 +47,8 @@ document.addEventListener('DOMContentLoaded', function() {
         
         let bgColorIndex = getRandomIndex(bgColors.length);
         document.getElementsByTagName('body')[0].style.backgroundColor = bgColors[bgColorIndex];
+        document.getElementsByClassName('fa-twitter-square')[0].style.color = bgColors[bgColorIndex];
+        document.getElementById('new-quote').style.backgroundColor = bgColors[bgColorIndex];
 
         let url = encodeURI(`https://twitter.com/intent/tweet?hashtags=quotes&text="${quote}" ${author}`);
         document.getElementById('tweet-quote').href = url;
