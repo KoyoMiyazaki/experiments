@@ -5,6 +5,8 @@
   list-style: none;
   vertical-align: baseline;
   word-wrap: break-word;
+  -webkit-transition: all 0.7s;
+  transition: all 0.7s;
 }
 
 .mt-200px {
