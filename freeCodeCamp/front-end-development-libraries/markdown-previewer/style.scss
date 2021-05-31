@@ -33,13 +33,17 @@ $contentColor: rgba(0, 150, 136, 0.22);
 #editor {
   font-size: 0.9rem;
   line-height: 1.3rem;
+  height: 300px;
+}
+
+#preview {
+    height: auto;
 }
 
 #editor,
 #preview {
   padding: 5px;
   width: 100%;
-  height: 300px;
   border: none;
   background-color: $contentColor;
 }
@@ -76,6 +80,7 @@ $contentColor: rgba(0, 150, 136, 0.22);
   #editor {
     font-size: 1.1rem;
     line-height: 1.5rem;
+    height: 100%;
   }
 
   #editor,
@@ -83,7 +88,6 @@ $contentColor: rgba(0, 150, 136, 0.22);
     margin-top: 40px;
     padding: 5px;
     width: 100%;
-    height: 100%;
     border: none;
     background-color: $contentColor;
   }

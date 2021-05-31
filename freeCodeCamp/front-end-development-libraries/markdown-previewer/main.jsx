@@ -26,27 +26,45 @@ class MarkdownPreviewer extends React.Component {
         return (
             <div>
                 <div className="split-window editor-window">
-                    <div className="editor-title">
-                        <p><strong>Editor</strong></p>
-                    </div>
-                    <textarea
-                      id="editor"
-                      type="text"
-                      value={this.state.userInput}
-                      onChange={this.handleChange}
-                    ></textarea>
+                    <WindowTitle className={"editor-title"} titleText={"Editor"} />
+                    <Editor userInput={this.state.userInput} onChange={this.handleChange} />
                 </div>
                 <div className="split-window previewer-window">
-                    <p className="previewer-title"><strong>Previewer</strong></p>
-                    <div id="preview"
-                         dangerouslySetInnerHTML={{__html: marked(this.state.userInput.toString(), { renderer: renderer })}}
-                    >
-                    </div>
+                    <WindowTitle className={"previewer-title"} titleText={"Previewer"} />
+                    <Previewer userInput={this.state.userInput} />
                 </div>
             </div>
         );
     }
 }
+
+const WindowTitle = props => {
+    return (
+        <p className={props.className}>
+            <strong>{props.titleText}</strong>
+        </p>
+    );
+};
+
+const Editor = props => {
+    return (
+        <textarea
+            id="editor"
+            type="text"
+            value={props.userInput}
+            onChange={props.onChange}
+        />
+    );
+};
+
+const Previewer = props => {
+    return (
+        <div id="preview"
+             dangerouslySetInnerHTML={{__html: marked(props.userInput.toString(), { renderer: renderer })}}
+        />
+    );
+};
+
 const placeholder = `# Welcome to my React Markdown Previewer!
 
 ## This is a sub-heading...
@@ -95,4 +113,5 @@ And here. | Okay. | I think we get it.
 const target = document.querySelector('#app');
 ReactDOM.render(<MarkdownPreviewer />, target);
 
-////////////////////////////////////////////////////////////
+let prev = document.getElementById('preview').clientHeight;
+console.log(prev);
