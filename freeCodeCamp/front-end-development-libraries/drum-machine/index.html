@@ -22,24 +22,49 @@
         <div id="drum-machine" class="container d-flex flex-row">
             <div class="btn-group d-flex flex-column" role="group">
                 <div class="btn-row">
-                    <button type="button" id="Heater-1" class="btn btn-outline-primary drum-pad">Q</button>
-                    <button type="button" class="btn btn-outline-primary drum-pad">W</button>
-                    <button type="button" class="btn btn-outline-primary drum-pad">E</button>
+                    <button type="button" id="Heater-1" class="btn btn-outline-primary drum-pad">
+                        Q
+                        <audio id="Q" class="clip" preload="auto" src="https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3">
+                    </button>
+                    <button type="button" id="Heater-2" class="btn btn-outline-primary drum-pad">
+                        W
+                        <audio id="W" class="clip" preload="auto" src="https://s3.amazonaws.com/freecodecamp/drums/Heater-2.mp3">
+                    </button>
+                    <button type="button" id="Heater-3" class="btn btn-outline-primary drum-pad">
+                        E
+                        <audio id="E" class="clip" preload="auto" src="https://s3.amazonaws.com/freecodecamp/drums/Heater-3.mp3">
+                    </button>
                 </div>
                 <div class="btn-row mt-1 mb-1">
-                    <button type="button" class="btn btn-outline-primary drum-pad">A</button>
-                    <button type="button" class="btn btn-outline-primary drum-pad">S</button>
-                    <button type="button" class="btn btn-outline-primary drum-pad">D</button>
+                    <button type="button" id="Heater-4" class="btn btn-outline-primary drum-pad">
+                        A
+                        <audio id="A" class="clip" preload="auto" src="https://s3.amazonaws.com/freecodecamp/drums/Heater-4_1.mp3">
+                    </button>
+                    <button type="button" id="Clap" class="btn btn-outline-primary drum-pad">
+                        S
+                        <audio id="S" class="clip" preload="auto" src="https://s3.amazonaws.com/freecodecamp/drums/Heater-6.mp3">
+                    </button>
+                    <button type="button" id="Open-HH" class="btn btn-outline-primary drum-pad">
+                        D
+                        <audio id="D" class="clip" preload="auto" src="https://s3.amazonaws.com/freecodecamp/drums/Dsc_Oh.mp3">
+                    </button>
                 </div>
                 <div class="btn-row">
-                    <button type="button" class="btn btn-outline-primary drum-pad">Z</button>
-                    <button type="button" class="btn btn-outline-primary drum-pad">X</button>
-                    <button type="button" class="btn btn-outline-primary drum-pad">C</button>
+                    <button type="button" id="Kick-n'-Hat" class="btn btn-outline-primary drum-pad">
+                        Z
+                        <audio id="Z" class="clip" preload="auto" src="https://s3.amazonaws.com/freecodecamp/drums/Kick_n_Hat.mp3">
+                    </button>
+                    <button type="button" id="Kick" class="btn btn-outline-primary drum-pad">
+                        X
+                        <audio id="X" class="clip" preload="auto" src="https://s3.amazonaws.com/freecodecamp/drums/RP4_KICK_1.mp3">
+                    </button>
+                    <button type="button" id="Closed-HH" class="btn btn-outline-primary drum-pad">
+                        C
+                        <audio id="C" class="clip" preload="auto" src="https://s3.amazonaws.com/freecodecamp/drums/Cev_H2.mp3">
+                    </button>
                 </div>
 
-                <audio id="sound-Heater-1" preload="auto">
-                    <source src="https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3" type="audio/mp3">
-                </audio>
+                
             </div>
             
             <div class="control-group d-flex flex-column">
