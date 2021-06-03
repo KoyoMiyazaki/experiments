@@ -75,11 +75,12 @@ class Button extends React.Component {
 
     sound() {
         document.getElementById(this.state.keyValue).play();
+        document.getElementById("display").textContent = keyStore[this.state.keyValue]["id"];
     };
 
     soundKeyPress(e) {
         document.getElementById(e.key.toUpperCase()).play();
-        // console.log(e.key);
+        document.getElementById("display").textContent = keyStore[this.state.keyValue]["id"];
     }
 
     render() {
@@ -110,7 +111,7 @@ class ControlGroup extends React.Component {
                 <div className="form-check form-switch">
                     <input className="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
                 </div>
-                <div id="display"><p><b>display area</b></p></div>
+                <div id="display"><p><b></b></p></div>
                 <form>
                     <div className="form-group">
                       <label for="formControlRange">Volume</label>
@@ -133,10 +134,5 @@ class DrumMachine extends React.Component {
     }
 }
 
-
 const target = document.querySelector('#app');
 ReactDOM.render(<DrumMachine />, target);
-
-// let button = document.getElementById('Heater-1');
-// console.log(button);
-// button.onclick = sound;
