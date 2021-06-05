@@ -43,6 +43,7 @@ class Calculator extends React.Component {
         }
         this.handleOperators = this.handleOperators.bind(this);
         this.handleNumbers = this.handleNumbers.bind(this);
+        this.handleDecimalOperator = this.handleDecimalOperator.bind(this);
         this.initialize = this.initialize.bind(this);
         this.calculate = this.calculate.bind(this); 
     }
@@ -50,15 +51,19 @@ class Calculator extends React.Component {
     handleOperators(event) {
         let inputOperator = event.target.value;
 
-        if (inputOperator === '-') {
-            if (this.state.formula.slice(-2) !== '--' && this.state.formula.slice(-2) !== '+-' && this.state.formula.slice(-2) !== 'X-' && this.state.formula.slice(-2) !== '/-') {
+        if (this.state.lastInput === '=') {
+            this.setState({
+                formula: this.state.result + inputOperator,
+            });
+        } else if (inputOperator === '-') {
+            if (this.state.formula.slice(-2) !== '--' && this.state.formula.slice(-2) !== '+-' && this.state.formula.slice(-2) !== 'x-' && this.state.formula.slice(-2) !== '/-') {
                 this.setState({
                     formula: this.state.formula + inputOperator,
                 });
             }
         } else {
             if (isNaN(this.state.lastInput)) {
-                if (this.state.formula.slice(-2) === '--' || this.state.formula.slice(-2) === '+-' || this.state.formula.slice(-2) === 'X-' || this.state.formula.slice(-2) === '/-') {
+                if (this.state.formula.slice(-2) === '--' || this.state.formula.slice(-2) === '+-' || this.state.formula.slice(-2) === 'x-' || this.state.formula.slice(-2) === '/-') {
                     this.setState({
                         formula: this.state.formula.slice(0, -2) + inputOperator,
                     });
@@ -87,20 +92,51 @@ class Calculator extends React.Component {
                 result: inputNumber,
                 formula: inputNumber,
             });
-        } else if (this.state.lastInput === '+' || this.state.lastInput === '-' || this.state.lastInput === 'X' || this.state.lastInput === '/') {
+        } else if (this.state.lastInput === '+' || this.state.lastInput === '-' || this.state.lastInput === 'x' || this.state.lastInput === '/') {
             this.setState({
                 result: inputNumber,
-                formula: this.state.formula + inputNumber
+                formula: this.state.formula + inputNumber,
             });
         } else {
             this.setState({
                 result: this.state.result + inputNumber,
-                formula: this.state.formula + inputNumber
+                formula: this.state.formula + inputNumber,
             });
         }
         this.setState({
             lastInput: inputNumber,
         });
+    }
+
+    handleDecimalOperator() {
+        let lastOperand = this.state.formula.split(/[\+\-x\/]/).slice(-1)[0];
+        if (this.state.lastInput === '=') {
+            this.setState({
+                result: '0.',
+                formula: '0.',
+                lastInput: '.',
+            });
+        } else if (lastOperand.search(/\d*\.\d*/) === -1) {
+            if (this.state.result === '0' && this.state.lastInput === '') {
+                this.setState({
+                    result: '0.',
+                    formula: '0.',
+                });
+            } else if (this.state.lastInput === '+' || this.state.lastInput === '-' || this.state.lastInput === 'x' || this.state.lastInput === '/') {
+                this.setState({
+                    result: '0.',
+                    formula: this.state.formula + '0.',
+                });
+            } else if (isNaN(this.state.lastInput) === false) {
+                this.setState({
+                    result: this.state.result + '.',
+                    formula: this.state.formula + '.',
+                });
+            }
+            this.setState({
+                lastInput: '.',
+            });
+        }
     }
 
     initialize() {
@@ -149,7 +185,7 @@ class Calculator extends React.Component {
                         </div>
                         <div className="btn-row">
                             <Buttons id="zero" className="btn-outline-dark" char="0" clickAction={this.handleNumbers} />
-                            <Buttons id="decimal" className="btn-outline-dark non-border-l" char="." />
+                            <Buttons id="decimal" className="btn-outline-dark non-border-l" char="." clickAction={this.handleDecimalOperator} />
                         </div>
                     </div>
                     <div className="btn-group">
