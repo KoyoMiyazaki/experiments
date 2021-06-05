@@ -1,0 +1,66 @@
+/* common style */
+* {
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  word-wrap: break-word;
+  font-family: Gill Sans Extrabold, sans-serif;
+}
+
+body {
+  background-color: rgba(51, 140, 1, 0.13);
+}
+
+.container {
+  margin: 10rem auto;
+  padding: 15px 5px;
+  max-width: 266px;
+  background-color: #eaeaea;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+/* -- Display's style -- */
+#display {
+  max-width: 258px;
+  text-align: right;
+}
+
+.formula, .result {
+  margin-bottom: 0.25rem;
+}
+
+.formula {
+  font-size: 0.9rem;
+}
+
+.result {
+  font-size: 1.2rem;
+}
+
+/* -- Button's style -- */
+.btn {
+  border-radius: 0;
+  width: 4rem;
+  height: 4rem;
+  border: 1px solid #222222;
+  border-collapse: collapse;
+}
+
+#zero, .btn-danger {
+  width: 8rem;
+}
+
+.btn-primary {
+  height: 8rem;
+}
+
+.non-border-l {
+  border-left: none;
+}
+
+.non-border-b {
+  border-bottom: none;
+}
+/*# sourceMappingURL=style.css.map */
