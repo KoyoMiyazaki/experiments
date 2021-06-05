@@ -1,9 +1,18 @@
-class Display extends React.Component {
+class ResultDisplay extends React.Component {
     render() {
         return (
             <div id="display">
-                <p className="formula">1+1</p>
-                <p className="result">9007199254740991</p>
+                <p className="result">{this.props.result}</p>
+            </div>
+        );
+    }
+}
+
+class FormulaDisplay extends React.Component {
+    render() {
+        return (
+            <div id="formula-display">
+                <p className="formula">{this.props.formula}</p>
             </div>
         );
     }
@@ -11,100 +20,147 @@ class Display extends React.Component {
 
 class Buttons extends React.Component {
     render() {
-        return (
-            <div className="d-flex flex-row" role="group">
-                <div className="btn-group d-flex flex-column">
-                    <div className="btn-row">
-                        <button id="clear" className="btn btn-danger non-border-b" type="button">AC</button>
-                        <button id="divide" className="btn btn-secondary non-border-l non-border-b" type="button">/</button>
-                    </div>
-                    <div className="btn-row">
-                        <button id="seven" className="btn btn-outline-dark non-border-b" type="button">7</button>
-                        <button id="eight" className="btn btn-outline-dark non-border-l non-border-b" type="button">8</button>
-                        <button id="nine" className="btn btn-outline-dark non-border-l non-border-b" type="button">9</button>
-                    </div>
-                    <div className="btn-row">
-                        <button id="four" className="btn btn-outline-dark non-border-b" type="button">4</button>
-                        <button id="five" className="btn btn-outline-dark non-border-l non-border-b" type="button">5</button>
-                        <button id="six" className="btn btn-outline-dark non-border-l non-border-b" type="button">6</button>
-                    </div>
-                    <div className="btn-row">
-                        <button id="one" className="btn btn-outline-dark non-border-b" type="button">1</button>
-                        <button id="two" className="btn btn-outline-dark non-border-l non-border-b" type="button">2</button>
-                        <button id="three" className="btn btn-outline-dark non-border-l non-border-b" type="button">3</button>
-                    </div>
-                    <div className="btn-row">
-                        <button id="zero" className="btn btn-outline-dark" type="button">0</button>
-                        <button id="decimal" className="btn btn-outline-dark non-border-l" type="button">.</button>
-                    </div>
-                </div>
-                <div className="btn-group">
-                    <div className="btn-row d-flex flex-column">
-                        <button id="multiply" className="btn btn-secondary non-border-l non-border-b" type="button">X</button>
-                        <button id="subtract" className="btn btn-secondary non-border-l non-border-b" type="button">-</button>
-                        <button id="add" className="btn btn-secondary non-border-l non-border-b" type="button">+</button>
-                        <button id="equals" className="btn btn-primary non-border-l" type="button">=</button>
-                    </div>
-                </div>
-                
-                <div className="btn-row mt-1 mb-1">
-                </div>
-                <div className="btn-row">
-                </div>
-            </div>
-        );
-    }
-}
-
-class Button extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            keyValue: this.props.keyValue,
-            id: keyStore[this.props.keyValue]["id"],
-            soundSrc: keyStore[this.props.keyValue]["soundSrc"],
-        }
-        this.sound = this.sound.bind(this);
-        this.soundKeyPress = this.soundKeyPress.bind(this);
-    }
-
-    sound() {
-        document.getElementById(this.state.keyValue).play();
-        document.getElementById("display").textContent = keyStore[this.state.keyValue]["id"];
-    };
-
-    soundKeyPress(e) {
-        document.getElementById(e.key.toUpperCase()).play();
-        document.getElementById("display").textContent = keyStore[this.state.keyValue]["id"];
-    }
-
-    render() {
+        const commonClass="btn";
         return (
             <button
-              type="button"
-              id={this.state.id}
-              className="btn btn-outline-primary drum-pad"
-              onClick={this.sound}
-              onKeyPress={this.soundKeyPress}>
-              {this.state.keyValue}
-              <audio 
-                id={this.state.keyValue}
-                className="clip"
-                preload="auto"
-                src={this.state.soundSrc}
-              />
+                id={this.props.id}
+                className={`${commonClass} ${this.props.className}`}
+                value={this.props.char}
+                onClick={this.props.clickAction}
+            >{this.props.char}
             </button>
-            
         );
     }
 }
 
 class Calculator extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            result: '0',
+            formula: '',
+            lastInput: '',
+        }
+        this.handleOperators = this.handleOperators.bind(this);
+        this.handleNumbers = this.handleNumbers.bind(this);
+        this.initialize = this.initialize.bind(this);
+        this.calculate = this.calculate.bind(this); 
+    }
+
+    handleOperators(event) {
+        let inputOperator = event.target.value;
+
+        if (inputOperator === '-') {
+            if (this.state.formula.slice(-2) !== '--' && this.state.formula.slice(-2) !== '+-' && this.state.formula.slice(-2) !== 'X-' && this.state.formula.slice(-2) !== '/-') {
+                this.setState({
+                    formula: this.state.formula + inputOperator,
+                });
+            }
+        } else {
+            if (isNaN(this.state.lastInput)) {
+                if (this.state.formula.slice(-2) === '--' || this.state.formula.slice(-2) === '+-' || this.state.formula.slice(-2) === 'X-' || this.state.formula.slice(-2) === '/-') {
+                    this.setState({
+                        formula: this.state.formula.slice(0, -2) + inputOperator,
+                    });
+                } else {
+                    this.setState({
+                        formula: this.state.formula.slice(0, -1) + inputOperator,
+                    });
+                }
+            } else {
+                this.setState({
+                    formula: this.state.formula + inputOperator,
+                });
+            }
+        }
+        
+        this.setState({
+            result: inputOperator,
+            lastInput: inputOperator,
+        });
+    }
+
+    handleNumbers(event) {
+        let inputNumber = event.target.value;
+        if (this.state.result === '0' || this.state.lastInput === '=') {
+            this.setState({
+                result: inputNumber,
+                formula: inputNumber,
+            });
+        } else if (this.state.lastInput === '+' || this.state.lastInput === '-' || this.state.lastInput === 'X' || this.state.lastInput === '/') {
+            this.setState({
+                result: inputNumber,
+                formula: this.state.formula + inputNumber
+            });
+        } else {
+            this.setState({
+                result: this.state.result + inputNumber,
+                formula: this.state.formula + inputNumber
+            });
+        }
+        this.setState({
+            lastInput: inputNumber,
+        });
+    }
+
+    initialize() {
+        this.setState({
+            result: '0',
+            formula: '',
+            lastInput: '',
+        });
+    }
+
+    calculate() {
+        let calcResult = eval(this.state.formula.replace(/x/g, '*'));
+        this.setState({
+            result: calcResult,
+            formula: `${this.state.formula}=${calcResult}`,
+            lastInput: '=',
+        });
+    }
+
     render() {
         return (
             <div id="calculator" className="container">
-                <Display />
-                <Buttons />
+                <FormulaDisplay formula={this.state.formula} />
+                <ResultDisplay result={this.state.result} />
+
+                <div className="d-flex flex-row" role="group">
+                    <div className="btn-group d-flex flex-column">
+                        <div className="btn-row">
+                            <Buttons id="clear" className="btn-danger non-border-b" char="AC" clickAction={this.initialize} />
+                            <Buttons id="divide" className="btn-secondary non-border-l non-border-b" char="/" clickAction={this.handleOperators} />
+                        </div>
+                        <div className="btn-row">
+                            <Buttons id="seven" className="btn-outline-dark non-border-b" char="7" clickAction={this.handleNumbers} />
+                            <Buttons id="eight" className="btn-outline-dark non-border-l non-border-b" char="8" clickAction={this.handleNumbers} />
+                            <Buttons id="nine" className="btn-outline-dark non-border-l non-border-b" char="9" clickAction={this.handleNumbers} />
+                        </div>
+                        <div className="btn-row">
+                            <Buttons id="four" className="btn-outline-dark non-border-b" char="4" clickAction={this.handleNumbers} />
+                            <Buttons id="five" className="btn-outline-dark non-border-l non-border-b" char="5" clickAction={this.handleNumbers} />
+                            <Buttons id="six" className="btn-outline-dark non-border-l non-border-b" char="6" clickAction={this.handleNumbers} />
+                        </div>
+                        <div className="btn-row">
+                            <Buttons id="one" className="btn-outline-dark non-border-b" char="1" clickAction={this.handleNumbers} />
+                            <Buttons id="two" className="btn-outline-dark non-border-l non-border-b" char="2" clickAction={this.handleNumbers} />
+                            <Buttons id="three" className="btn-outline-dark non-border-l non-border-b" char="3" clickAction={this.handleNumbers} />
+                        </div>
+                        <div className="btn-row">
+                            <Buttons id="zero" className="btn-outline-dark" char="0" clickAction={this.handleNumbers} />
+                            <Buttons id="decimal" className="btn-outline-dark non-border-l" char="." />
+                        </div>
+                    </div>
+                    <div className="btn-group">
+                        <div className="btn-row d-flex flex-column">
+                            <Buttons id="multiply" className="btn-secondary non-border-l non-border-b" char="x" clickAction={this.handleOperators} />
+                            <Buttons id="subtract" className="btn-secondary non-border-l non-border-b" char="-" clickAction={this.handleOperators} />
+                            <Buttons id="add" className="btn-secondary non-border-l non-border-b" char="+" clickAction={this.handleOperators} />
+                            <Buttons id="equals" className="btn-primary non-border-l" char="=" clickAction={this.calculate} />
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }

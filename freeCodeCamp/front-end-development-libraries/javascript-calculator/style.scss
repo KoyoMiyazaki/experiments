@@ -22,7 +22,7 @@ body {
 }
 
 /* -- Display's style -- */
-#display {
+#display, #formula-display {
     max-width: 258px;
     text-align: right;
 }
@@ -33,6 +33,7 @@ body {
 
 .formula {
     font-size: 0.9rem;
+    height: 1.35rem;
 }
 
 .result {
