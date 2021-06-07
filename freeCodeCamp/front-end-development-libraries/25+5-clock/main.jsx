@@ -42,7 +42,8 @@ class TimerApp extends React.Component {
             isSessionTime: true,
             isRunning: false,
             isResetState: true,
-            PassageId: "",
+            timerType: "Session",
+            passageId: "",
         }
         this.increaseBreakLength = this.increaseBreakLength.bind(this);
         this.decreaseBreakLength = this.decreaseBreakLength.bind(this);
@@ -91,14 +92,17 @@ class TimerApp extends React.Component {
 
     showTimer() {
         if (this.state.timerLength === 0) {
+            document.getElementById("beep").play();
             this.state.isSessionTime ?
               this.setState({
                 timerLength: this.state.breakLength * 60,
                 isSessionTime: !this.state.isSessionTime,
+                timerType: "Break",
               }) : 
               this.setState({
                 timerLength: this.state.sessionLength * 60,
                 isSessionTime: !this.state.isSessionTime,
+                timerType: "Session",
               });
         } else if (this.state.timerLength - 1 >= 0) {
             this.setState({
@@ -123,14 +127,14 @@ class TimerApp extends React.Component {
         this.setState({
             isRunning: true,
             isResetState: false,
-            PassageId: setInterval(this.showTimer, 1000),
+            passageId: setInterval(this.showTimer, 1000),
         });
     }
     
     stopTimer() {
         this.setState({
             isRunning: false,
-            PassageId: clearInterval(this.state.PassageId),
+            passageId: clearInterval(this.state.passageId),
         });
     }
 
@@ -142,8 +146,12 @@ class TimerApp extends React.Component {
             isSessionTime: true,
             isRunning: false,
             isResetState: true,
-            PassageId: clearInterval(this.state.PassageId),
+            timerType: "Session",
+            passageId: clearInterval(this.state.passageId),
         });
+        let beep = document.getElementById("beep");
+        beep.pause();
+        beep.currentTime = 0;
     }
 
     calcTime() {
@@ -167,9 +175,7 @@ class TimerApp extends React.Component {
                   decreaseSessionLength={this.decreaseSessionLength}
                 />
                 <div className="timer-wrapper">
-                    <div id="timer-label">
-                        {this.state.isSessionTime ? "Session" : "Break"}
-                    </div>
+                    <div id="timer-label">{this.state.timerType}</div>
                     <div id="time-left">{this.calcTime()}</div>
                 </div>
                 <div className="timer-control">
@@ -180,6 +186,13 @@ class TimerApp extends React.Component {
                     <button id="reset" onClick={this.reset}>
                         <i className="fas fa-sync-alt"></i>
                     </button>
+                </div>
+                <div className="timer-beep">
+                    <audio 
+                      id="beep"
+                      preload="auto"
+                      src="https://raw.githubusercontent.com/freeCodeCamp/cdn/master/build/testable-projects-fcc/audio/BeepSound.wav"
+                    />
                 </div>
             </div>
         );
