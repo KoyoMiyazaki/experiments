@@ -1,0 +1,25 @@
+* {
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  word-wrap: break-word;
+  font-family: Gill Sans Extrabold, sans-serif;
+}
+
+body {
+  background-color: #687584;
+}
+
+.container {
+  margin: 2rem auto;
+  padding: 15px 5px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  max-width: 960px;
+  background-color: white;
+  -webkit-box-shadow: 2px 2px 15px 3px #2a2a2a;
+          box-shadow: 2px 2px 15px 3px #2a2a2a;
+}
+/*# sourceMappingURL=style.css.map */
