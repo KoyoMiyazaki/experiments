@@ -1,0 +1,48 @@
+* {
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  word-wrap: break-word;
+  font-family: Gill Sans Extrabold, sans-serif;
+}
+
+body {
+  background-color: #687584;
+}
+
+.container {
+  margin: 2rem auto;
+  padding: 15px 5px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  width: 2400px;
+  max-width: 2400px;
+  background-color: white;
+  -webkit-box-shadow: 2px 2px 15px 3px #2a2a2a;
+          box-shadow: 2px 2px 15px 3px #2a2a2a;
+}
+
+.bar:hover {
+  fill: rgba(0, 0, 80, 0.5);
+}
+
+#tooltip {
+  position: absolute;
+  text-align: center;
+  width: auto;
+  height: auto;
+  padding: 10px;
+  font: 12px;
+  background: white;
+  opacity: 0.9;
+  -webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.8);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.8);
+  visibility: hidden;
+}
+
+.tick {
+  font-size: 14px;
+}
+/*# sourceMappingURL=style.css.map */
