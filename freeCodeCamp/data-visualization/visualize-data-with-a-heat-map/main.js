@@ -11,6 +11,7 @@ fetch(URL)
         baseTemperature = jsonData["baseTemperature"];
         dataset = jsonData["monthlyVariance"].slice();
         drawHeatMap();
+        drawLegend();
     })
     
 
@@ -78,6 +79,7 @@ const drawHeatMap = () => {
 　　　　.append("div")
 　　　　.attr("id", "tooltip");
 
+    // データの設定
     let barWidth = x(dataset[12]["year"]) - x(dataset[0]["year"]);
     let barHeight = y(dataset[1]["month"] - 0.5) - y(dataset[0]["month"] - 0.5);
 
@@ -138,4 +140,37 @@ const drawHeatMap = () => {
         // .on("mouseout", function(d, i) {
         //     tooltip.style("visibility", "hidden");
         // });
+    
+    // 凡例の設定
+    const legendWidth = 600 - margin.left - margin.right;
+    const legendHeight = 100 - margin.top - margin.bottom;
+    const legend = d3.select("body")
+        .select("div")
+        .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", legendHeight + margin.top + margin.bottom)
+        .attr("id", "legend");
+    
+    const legendX = d3.scaleLinear()
+        // .domain(d3.extent(dataset, d => d["year"]))
+        .domain([0, 9])
+        .range([0, legendWidth])
+    
+    // X軸を追加
+    const legendXAxis = d3.axisBottom(legendX);
+    const legendXAxisTicks = [
+        "2.8", "3.9", "5.0", "6.1", "7.2",
+        "8.3", "9.5", "10.6", "11.7", "12.8",
+    ];
+    legend.append("g")
+        .attr("class", "x axis")
+        .attr("transform", `translate(${margin.left}, ${margin.top})`)
+        .call(legendXAxis.tickFormat((d, i) => legendXAxisTicks[i]));
+
+    legend.append('rect') // 凡例の色付け四角
+        .attr("x", 100)
+        .attr("y", 0)
+        .attr("width", 15)
+        .attr("height", 15)
+        .attr("fill", "orange");
 };
