@@ -27,8 +27,9 @@ body {
   box-shadow: 2px 2px 15px 3px #2a2a2a;
 }
 
-.bar:hover {
-  fill: rgba(0, 0, 80, 0.5);
+.cell:hover {
+  stroke: black;
+  stroke-width: 2;
 }
 
 #tooltip {

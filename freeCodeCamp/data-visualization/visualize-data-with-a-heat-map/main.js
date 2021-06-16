@@ -11,7 +11,6 @@ fetch(URL)
         baseTemperature = jsonData["baseTemperature"];
         dataset = jsonData["monthlyVariance"].slice();
         drawHeatMap();
-        drawLegend();
     })
     
 
@@ -54,7 +53,6 @@ const drawHeatMap = () => {
         .attr("id", "x-axis")
         .attr("class", "x axis")
         .attr("transform", `translate(0, ${height})`)
-        // .call(xAxis.tickValues(getXTicks(x.domain()[0], x.domain()[1])));
         .call(xAxis.tickValues(getXTicks(1760, 2010)));
     
     // Y軸の設定
@@ -63,7 +61,7 @@ const drawHeatMap = () => {
        .range([0, height]);
     
     // Y軸を追加
-    const yAcisLabel = [
+    const monthName = [
         "January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"
     ];
@@ -72,7 +70,7 @@ const drawHeatMap = () => {
     svg.append("g")
         .attr("id", "y-axis")
         .attr("class", "y axis")
-        .call(yAxis.tickFormat((d, i) => yAcisLabel[i]));
+        .call(yAxis.tickFormat((d, i) => monthName[i]));
     
 　　// ツールチップの設定
 　　const tooltip = d3.select("body")
@@ -83,7 +81,6 @@ const drawHeatMap = () => {
     let barWidth = x(dataset[12]["year"]) - x(dataset[0]["year"]);
     let barHeight = y(dataset[1]["month"] - 0.5) - y(dataset[0]["month"] - 0.5);
 
-    console.log(y(dataset[1]["month"] - 0.5));
     svg.selectAll(".bar")
         .data(dataset)
         .enter().append("rect")
@@ -121,25 +118,23 @@ const drawHeatMap = () => {
                 return "rgb(49, 54, 149)";
             }
         })
-        // .on("mouseover", function(event, date) {
-        //     let data = event.target.dataset;
-        //     tooltip
-        //         .style("visibility", "visible")
-        //         .html(
-        //             data["date"].split("-")[0] + " " +
-        //             getQuarter(parseInt(data["date"].split("-")[1])) +
-        //             "<br>" +
-        //             "$" +
-        //             data["gdp"] +
-        //             " Billion"
-        //         )
-        //         .attr("data-date", data["date"])
-        //         .style("top", `${height}px`)
-        //         .style("left", `${event.clientX + 20}px`);
-        // })
-        // .on("mouseout", function(d, i) {
-        //     tooltip.style("visibility", "hidden");
-        // });
+        .on("mouseover", function(event, data) {
+            tooltip
+                .style("visibility", "visible")
+                .html(
+                    data["year"] + " - " +
+                    monthName[data["month"] - 1] +
+                    "<br>" +
+                    Math.round((baseTemperature + data["variance"]) * 10) / 10 + "℃" +
+                    "<br>" +
+                    Math.round(data["variance"] * 10) / 10 + "℃"
+                )
+                .style("top", `${y(data["month"] + 0.5) + margin.top}px`)
+                .style("left", `${x(data["year"]) + margin.left + 20}px`);
+        })
+        .on("mouseout", function(d, i) {
+            tooltip.style("visibility", "hidden");
+        });
     
     // 凡例の設定
     const legendWidth = 600 - margin.left - margin.right;
@@ -152,7 +147,6 @@ const drawHeatMap = () => {
         .attr("id", "legend");
     
     const legendX = d3.scaleLinear()
-        // .domain(d3.extent(dataset, d => d["year"]))
         .domain([0, 9])
         .range([0, legendWidth])
     
@@ -167,10 +161,21 @@ const drawHeatMap = () => {
         .attr("transform", `translate(${margin.left}, ${margin.top})`)
         .call(legendXAxis.tickFormat((d, i) => legendXAxisTicks[i]));
 
-    legend.append('rect') // 凡例の色付け四角
-        .attr("x", 100)
+    const legendColors = [
+        "rgb(69, 117, 180)","rgb(116, 173, 209)","rgb(171, 217, 233)",
+        "rgb(224, 243, 248)","rgb(255, 255, 191)","rgb(254, 224, 144)",
+        "rgb(253, 174, 97)","rgb(244, 109, 67)","rgb(215, 48, 39)"
+    ];
+
+    let rectWidth = legendX(1) - legendX(0);
+    legend.selectAll(".bar")
+        .data(legendColors)
+        .enter()
+        .append('rect') // 凡例の色付け四角
+        .attr("x", (d, i) => margin.left + rectWidth * i)
         .attr("y", 0)
-        .attr("width", 15)
-        .attr("height", 15)
-        .attr("fill", "orange");
+        .attr("width", rectWidth)
+        .attr("height", margin.top)
+        .attr("fill", d => d)
+        .attr("stroke", "black");
 };
