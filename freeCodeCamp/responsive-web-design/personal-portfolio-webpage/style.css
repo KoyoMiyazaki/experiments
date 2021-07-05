@@ -11,6 +11,10 @@ li {
     list-style: none;
 }
 
+a {
+    text-decoration: none;
+}
+
 body {
     max-width: 100%;
     font-size: 16px;
@@ -19,6 +23,99 @@ body {
     background-color: rgb(250, 250, 255);
 }
 
-h1 {
-    color: red;
+/* navbar style */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgb(37, 37, 138);
+}
+
+ul {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.navbar-item a {
+    display: block;
+    padding: 0 2rem;
+    height: 4rem;
+    line-height: 4rem;
+    font-size: 1.2rem;
+    color: white;
+}
+
+.navbar-item a:hover {
+    background-color: gray;
+}
+
+/* welcome-section style */
+#welcome-section {
+    height: 100vh;
+    padding-top: 4rem;
+    /* text-align: center; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #424258;
+}
+
+#welcome-section h1 {
+    font-size: 2rem;
+    color: white;
+}
+
+/* projects style */
+#projects {
+    padding: 6rem 2rem;
+    text-align: center;
+    background-color: #4a4ab1;
+}
+
+#projects h2 {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.projects-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.project-tile {
+    width: 32%;
+    margin-bottom: 2rem;
+    background-color: gray;
+}
+
+.project-tile img {
+    width: 100%;
+}
+
+.project-tile p {
+    margin: 1rem 0;
+    color: white;
+}
+
+/* background-color: #666671; */
+/* contact style */
+#contact {
+    padding: 6rem 2rem;
+    text-align: center;
+    background-color: #666671;
+}
+
+#contact h2 {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.contact-links {
+    margin-top: 2rem;
+}
+
+#contact a {
+    color: white;
 }
