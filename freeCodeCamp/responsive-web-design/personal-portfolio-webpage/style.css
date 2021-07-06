@@ -43,6 +43,7 @@ ul {
     line-height: 4rem;
     font-size: 1.2rem;
     color: white;
+    transition: all 0.2s ease-out;
 }
 
 .navbar-item a:hover {
@@ -99,7 +100,49 @@ ul {
     color: white;
 }
 
-/* background-color: #666671; */
+/* skills style */
+/* projects style */
+#skills {
+    padding: 6rem 2rem;
+    text-align: center;
+    background-color: #9c9cef;
+}
+
+#skills h2 {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.skills-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.skill-tile {
+    width: 32%;
+    padding: 2rem 0;
+    background-color: gray;
+}
+
+.skill-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+.skill-name {
+    width: 60%;
+    color: white;
+}
+
+.skill-level {
+    width: 40%;
+    color: yellow;
+}
+
 /* contact style */
 #contact {
     padding: 6rem 2rem;
@@ -113,7 +156,14 @@ ul {
 }
 
 .contact-links {
+    display: inline-block;
     margin-top: 2rem;
+    font-size: 1.2rem;
+    transition: all 0.2s ease-out;
+}
+
+.contact-links:hover {
+    transform: translateY(5px);
 }
 
 #contact a {
