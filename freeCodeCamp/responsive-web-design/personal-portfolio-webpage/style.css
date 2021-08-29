@@ -62,7 +62,7 @@ ul {
 }
 
 #welcome-section h1 {
-    font-size: 2rem;
+    font-size: 3rem;
     color: white;
 }
 
@@ -98,6 +98,14 @@ ul {
 .project-tile p {
     margin: 1rem 0;
     color: white;
+}
+
+.project-title {
+    font-size: 1.2rem;
+}
+
+.project-description {
+    word-wrap: break-word;
 }
 
 /* skills style */
@@ -143,29 +151,53 @@ ul {
     color: yellow;
 }
 
-/* contact style */
-#contact {
+/* link style */
+#link {
     padding: 6rem 2rem;
     text-align: center;
     background-color: #666671;
 }
 
-#contact h2 {
+#link h2 {
     font-size: 1.5rem;
     color: white;
 }
 
-.contact-links {
-    display: inline-block;
+.link-links {
     margin-top: 2rem;
     font-size: 1.2rem;
+}
+
+.link-links a {
+    color: white;
+    display: inline-block;
     transition: all 0.2s ease-out;
 }
 
-.contact-links:hover {
+.link-links a:hover {
     transform: translateY(5px);
 }
 
-#contact a {
-    color: white;
+/* media query */
+@media (max-width: 768px) {
+    .skills-content {
+        justify-content: center;
+    }
+    .skill-tile {
+        width: 60%;
+        margin-bottom: 1rem;
+    }
 }
+
+@media (max-width: 900px) {
+    .project-tile {
+        width: 48%;
+    }
+}
+
+@media (max-width: 1024px) {
+    .project-title {
+        font-size: 1rem;
+    }
+}
+
