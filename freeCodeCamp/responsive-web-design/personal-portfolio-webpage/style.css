@@ -121,6 +121,16 @@ ul {
     color: white;
 }
 
+#skills h3 {
+    margin-top: 1.2rem;
+    font-size: 1rem;
+    color: white;
+}
+
+#skills h3 i {
+    color: yellow;
+}
+
 .skills-content {
     display: flex;
     flex-wrap: wrap;
@@ -149,6 +159,28 @@ ul {
 .skill-level {
     width: 40%;
     color: yellow;
+}
+
+.skills-level-legend {
+    display: flex;
+    margin-top: 1rem;
+}
+
+.skills-level-legend-star,
+.skills-level-legend-description {
+    width: 50%;
+}
+
+.skills-level-legend-star {
+    margin-right: 1.2rem;
+    color: yellow;
+    text-align: right;
+}
+
+.skills-level-legend-description {
+    margin-left: 1.2rem;
+    color: white;
+    text-align: left;
 }
 
 /* link style */
